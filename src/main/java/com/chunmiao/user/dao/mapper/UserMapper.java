@@ -4,7 +4,7 @@ import com.chunmiao.common.BaseMapper;
 import com.chunmiao.user.bo.User;
 
 @BaseMapper
-public interface UserMapper{
+public interface UserMapper {
     int deleteByPrimaryKey(Long userId);
 
     int insert(User record);

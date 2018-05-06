@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * user
+ * t_user
  * @author 
  */
 public class User implements Serializable {
@@ -19,6 +19,20 @@ public class User implements Serializable {
     private Long phoneNumber;
 
     private String email;
+
+    private String headPic;
+
+    private String password;
+
+    private Long schoolId;
+
+    private String backId;
+
+    private Byte userType;
+
+    private Byte grade;
+
+    private String major;
 
     private static final long serialVersionUID = 1L;
 
@@ -70,6 +84,62 @@ public class User implements Serializable {
         this.email = email;
     }
 
+    public String getHeadPic() {
+        return headPic;
+    }
+
+    public void setHeadPic(String headPic) {
+        this.headPic = headPic;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Long getSchoolId() {
+        return schoolId;
+    }
+
+    public void setSchoolId(Long schoolId) {
+        this.schoolId = schoolId;
+    }
+
+    public String getBackId() {
+        return backId;
+    }
+
+    public void setBackId(String backId) {
+        this.backId = backId;
+    }
+
+    public Byte getUserType() {
+        return userType;
+    }
+
+    public void setUserType(Byte userType) {
+        this.userType = userType;
+    }
+
+    public Byte getGrade() {
+        return grade;
+    }
+
+    public void setGrade(Byte grade) {
+        this.grade = grade;
+    }
+
+    public String getMajor() {
+        return major;
+    }
+
+    public void setMajor(String major) {
+        this.major = major;
+    }
+
     @Override
     public boolean equals(Object that) {
         if (this == that) {
@@ -87,7 +157,14 @@ public class User implements Serializable {
             && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
             && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()))
             && (this.getPhoneNumber() == null ? other.getPhoneNumber() == null : this.getPhoneNumber().equals(other.getPhoneNumber()))
-            && (this.getEmail() == null ? other.getEmail() == null : this.getEmail().equals(other.getEmail()));
+            && (this.getEmail() == null ? other.getEmail() == null : this.getEmail().equals(other.getEmail()))
+            && (this.getHeadPic() == null ? other.getHeadPic() == null : this.getHeadPic().equals(other.getHeadPic()))
+            && (this.getPassword() == null ? other.getPassword() == null : this.getPassword().equals(other.getPassword()))
+            && (this.getSchoolId() == null ? other.getSchoolId() == null : this.getSchoolId().equals(other.getSchoolId()))
+            && (this.getBackId() == null ? other.getBackId() == null : this.getBackId().equals(other.getBackId()))
+            && (this.getUserType() == null ? other.getUserType() == null : this.getUserType().equals(other.getUserType()))
+            && (this.getGrade() == null ? other.getGrade() == null : this.getGrade().equals(other.getGrade()))
+            && (this.getMajor() == null ? other.getMajor() == null : this.getMajor().equals(other.getMajor()));
     }
 
     @Override
@@ -100,6 +177,13 @@ public class User implements Serializable {
         result = prime * result + ((getUpdateTime() == null) ? 0 : getUpdateTime().hashCode());
         result = prime * result + ((getPhoneNumber() == null) ? 0 : getPhoneNumber().hashCode());
         result = prime * result + ((getEmail() == null) ? 0 : getEmail().hashCode());
+        result = prime * result + ((getHeadPic() == null) ? 0 : getHeadPic().hashCode());
+        result = prime * result + ((getPassword() == null) ? 0 : getPassword().hashCode());
+        result = prime * result + ((getSchoolId() == null) ? 0 : getSchoolId().hashCode());
+        result = prime * result + ((getBackId() == null) ? 0 : getBackId().hashCode());
+        result = prime * result + ((getUserType() == null) ? 0 : getUserType().hashCode());
+        result = prime * result + ((getGrade() == null) ? 0 : getGrade().hashCode());
+        result = prime * result + ((getMajor() == null) ? 0 : getMajor().hashCode());
         return result;
     }
 
@@ -115,6 +199,13 @@ public class User implements Serializable {
         sb.append(", updateTime=").append(updateTime);
         sb.append(", phoneNumber=").append(phoneNumber);
         sb.append(", email=").append(email);
+        sb.append(", headPic=").append(headPic);
+        sb.append(", password=").append(password);
+        sb.append(", schoolId=").append(schoolId);
+        sb.append(", backId=").append(backId);
+        sb.append(", userType=").append(userType);
+        sb.append(", grade=").append(grade);
+        sb.append(", major=").append(major);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
