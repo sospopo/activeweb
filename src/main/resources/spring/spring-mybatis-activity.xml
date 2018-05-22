@@ -23,7 +23,7 @@
         <property name="dataSource" ref="dataSource"/>
         <property name="typeAliasesPackage" value="com.chunmiao.activity"/>
         <property name="configLocation" value="classpath:spring/spring-mybatis.xml"/>
-        <property name="mapperLocations" value="classpath:com/chunmiao/user/dao/mapper/*.xml"/>
+        <property name="mapperLocations" value="classpath:com/chunmiao/activity/dao/mapper/*.xml"/>
     </bean>
 
     <bean id="mapperScreenConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
