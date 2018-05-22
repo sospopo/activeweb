@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chunmiao.activity.dao.mapper.ActivityAttachMapper">
+  <resultMap id="BaseResultMap" type="com.chunmiao.activity.bo.ActivityAttach">
+    <id column="attach_id" jdbcType="BIGINT" property="attachId" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="activity_id" jdbcType="BIGINT" property="activityId" />
+    <result column="attach_type" jdbcType="TINYINT" property="attachType" />
+    <result column="material_id" jdbcType="VARCHAR" property="materialId" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="is_del" jdbcType="TINYINT" property="isDel" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.chunmiao.activity.bo.ActivityAttach">
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    attach_id, user_id, activity_id, attach_type, material_id, update_time, is_del, create_time
+  </sql>
+  <sql id="Blob_Column_List">
+    content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_activity_attach
+    where attach_id = #{attachId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_activity_attach
+    where attach_id = #{attachId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.chunmiao.activity.bo.ActivityAttach">
+    <selectKey keyProperty="attachId" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_activity_attach (user_id, activity_id, attach_type, 
+      material_id, update_time, is_del, 
+      create_time, content)
+    values (#{userId,jdbcType=BIGINT}, #{activityId,jdbcType=BIGINT}, #{attachType,jdbcType=TINYINT}, 
+      #{materialId,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{isDel,jdbcType=TINYINT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chunmiao.activity.bo.ActivityAttach">
+    <selectKey keyProperty="attachId" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_activity_attach
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="activityId != null">
+        activity_id,
+      </if>
+      <if test="attachType != null">
+        attach_type,
+      </if>
+      <if test="materialId != null">
+        material_id,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="isDel != null">
+        is_del,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="activityId != null">
+        #{activityId,jdbcType=BIGINT},
+      </if>
+      <if test="attachType != null">
+        #{attachType,jdbcType=TINYINT},
+      </if>
+      <if test="materialId != null">
+        #{materialId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDel != null">
+        #{isDel,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chunmiao.activity.bo.ActivityAttach">
+    update t_activity_attach
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="activityId != null">
+        activity_id = #{activityId,jdbcType=BIGINT},
+      </if>
+      <if test="attachType != null">
+        attach_type = #{attachType,jdbcType=TINYINT},
+      </if>
+      <if test="materialId != null">
+        material_id = #{materialId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDel != null">
+        is_del = #{isDel,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where attach_id = #{attachId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.chunmiao.activity.bo.ActivityAttach">
+    update t_activity_attach
+    set user_id = #{userId,jdbcType=BIGINT},
+      activity_id = #{activityId,jdbcType=BIGINT},
+      attach_type = #{attachType,jdbcType=TINYINT},
+      material_id = #{materialId,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      is_del = #{isDel,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where attach_id = #{attachId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chunmiao.activity.bo.ActivityAttach">
+    update t_activity_attach
+    set user_id = #{userId,jdbcType=BIGINT},
+      activity_id = #{activityId,jdbcType=BIGINT},
+      attach_type = #{attachType,jdbcType=TINYINT},
+      material_id = #{materialId,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      is_del = #{isDel,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where attach_id = #{attachId,jdbcType=BIGINT}
+  </update>
+</mapper>

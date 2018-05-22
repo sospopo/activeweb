@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chunmiao.user.dao.mapper.UserInterestMapper">
+  <resultMap id="BaseResultMap" type="com.chunmiao.user.bo.UserInterest">
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="interest_id" jdbcType="BIGINT" property="interestId" />
+    <result column="is_del" jdbcType="TINYINT" property="isDel" />
+    <result column="interest_type" jdbcType="TINYINT" property="interestType" />
+    <result column="is_read" jdbcType="TINYINT" property="isRead" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <insert id="insert" parameterType="com.chunmiao.user.bo.UserInterest">
+    insert into t_user_interest (user_id, interest_id, is_del, 
+      interest_type, is_read, create_time, 
+      update_time)
+    values (#{userId,jdbcType=BIGINT}, #{interestId,jdbcType=BIGINT}, #{isDel,jdbcType=TINYINT}, 
+      #{interestType,jdbcType=TINYINT}, #{isRead,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chunmiao.user.bo.UserInterest">
+    insert into t_user_interest
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="interestId != null">
+        interest_id,
+      </if>
+      <if test="isDel != null">
+        is_del,
+      </if>
+      <if test="interestType != null">
+        interest_type,
+      </if>
+      <if test="isRead != null">
+        is_read,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="interestId != null">
+        #{interestId,jdbcType=BIGINT},
+      </if>
+      <if test="isDel != null">
+        #{isDel,jdbcType=TINYINT},
+      </if>
+      <if test="interestType != null">
+        #{interestType,jdbcType=TINYINT},
+      </if>
+      <if test="isRead != null">
+        #{isRead,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>

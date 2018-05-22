@@ -1,4 +1,4 @@
 package com.chunmiao.activity.dao;
 
-public interface ActivityMapper {
+public class CommentDaoImpl {
 }
