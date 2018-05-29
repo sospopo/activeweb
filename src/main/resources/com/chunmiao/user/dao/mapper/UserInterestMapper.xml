@@ -67,4 +67,28 @@
       </if>
     </trim>
   </insert>
+
+  <update id="updateUserInterest" parameterType="com.chunmiao.user.bo.UserInterest">
+    update t_user_interest
+    set user_id = #{userId,jdbcType=BIGINT},
+      interest_id = #{interestId,jdbcType=BIGINT},
+      is_del = #{isDel,jdbcType=TINYINT},
+      interest_type = #{interestType,jdbcType=TINYINT},
+      is_read = #{isRead,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where user_id = #{userId,jdbcType=BIGINT}
+    and interest_id = #{interestId,jdbcType=BIGINT}
+    and is_del = 1
+  </update>
+
+  <select id="queryInterInterest" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_user_interest t1
+    where t1.is_del = 1
+    <if test="userId != ">
+
+    </if>
+  </select>
 </mapper>

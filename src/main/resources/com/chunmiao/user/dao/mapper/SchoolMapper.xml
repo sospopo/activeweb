@@ -90,4 +90,12 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where school_id = #{schoolId,jdbcType=BIGINT}
   </update>
+
+  <select id="query" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_school t1
+    where t1.is_del = 1
+    limit #{pageNum,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+   </select>
 </mapper>

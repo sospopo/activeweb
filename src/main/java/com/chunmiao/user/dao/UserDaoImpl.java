@@ -14,4 +14,16 @@ public class UserDaoImpl implements UserDao{
     public void createUser(User user) throws Exception{
         userMapper.insertSelective(user);
     }
+
+    public void updateUser(User user) throws Exception {
+        userMapper.updateByPrimaryKey(user);
+    }
+
+    public void deleteUser(Long userId) throws Exception {
+        userMapper.deleteByPrimaryKey(userId);
+    }
+
+    public User selectUserById(Long userId) throws Exception {
+        return selectUserById(userId);
+    }
 }
