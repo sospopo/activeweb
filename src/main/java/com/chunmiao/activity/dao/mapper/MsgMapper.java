@@ -1,7 +1,9 @@
 package com.chunmiao.activity.dao.mapper;
 
 import com.chunmiao.activity.bo.Msg;
+import com.chunmiao.common.BaseMapper;
 
+@BaseMapper
 public interface MsgMapper {
     int deleteByPrimaryKey(Long msgId);
 

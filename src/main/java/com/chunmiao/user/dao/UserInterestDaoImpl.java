@@ -3,9 +3,11 @@ package com.chunmiao.user.dao;
 import com.chunmiao.user.bo.UserInterest;
 import com.chunmiao.user.dao.mapper.UserInterestMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class UserInterestDaoImpl implements UserInterestDao{
     @Autowired
     private UserInterestMapper interestMapper;

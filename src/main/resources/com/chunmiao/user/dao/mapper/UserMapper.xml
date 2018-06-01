@@ -185,4 +185,11 @@
       major = #{major,jdbcType=VARCHAR}
     where user_id = #{userId,jdbcType=BIGINT}
   </update>
+
+  <select id="selectUserByName" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_user t1
+    where t1.user_name = #{userName,jdbcType=VARCHAR}
+  </select>
 </mapper>

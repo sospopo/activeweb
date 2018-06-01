@@ -1,7 +1,9 @@
 package com.chunmiao.activity.dao.mapper;
 
 import com.chunmiao.activity.bo.Comment;
+import com.chunmiao.common.BaseMapper;
 
+@BaseMapper
 public interface CommentMapper {
     int deleteByPrimaryKey(Long commentId);
 

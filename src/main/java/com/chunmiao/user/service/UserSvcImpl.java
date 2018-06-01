@@ -12,4 +12,12 @@ public class UserSvcImpl implements UserSvc{
     public void createUser(User user) throws Exception {
         userDao.createUser(user);
     }
+
+    public User queryUserById(Long userId) throws Exception {
+        return userDao.selectUserById(userId);
+    }
+
+    public User queryUserByName(String userName) throws Exception {
+        return userDao.selectUserByName(userName);
+    }
 }

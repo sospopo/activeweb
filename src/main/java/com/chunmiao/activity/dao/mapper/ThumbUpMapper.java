@@ -1,7 +1,9 @@
 package com.chunmiao.activity.dao.mapper;
 
 import com.chunmiao.activity.bo.ThumbUp;
+import com.chunmiao.common.BaseMapper;
 
+@BaseMapper
 public interface ThumbUpMapper {
     int deleteByPrimaryKey(Long thumbId);
 

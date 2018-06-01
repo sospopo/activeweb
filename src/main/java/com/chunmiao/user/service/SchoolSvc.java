@@ -8,4 +8,6 @@ public interface SchoolSvc {
     public void insertSchool(School school) throws Exception;
 
     public List<School> querySchool(Integer pageNum, Integer pageSize) throws Exception;
+
+    School queryById(Long schoolId);
 }

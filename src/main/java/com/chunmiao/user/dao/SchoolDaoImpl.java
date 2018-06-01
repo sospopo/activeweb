@@ -18,4 +18,8 @@ public class SchoolDaoImpl implements SchoolDao{
     public List<School> querySchool(Integer pageNum, Integer pageSize) throws Exception {
         return schoolMapper.query(pageNum,pageSize);
     }
+
+    public School queryById(Long schoolId) {
+        return schoolMapper.selectByPrimaryKey(schoolId);
+    }
 }

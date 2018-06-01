@@ -10,4 +10,6 @@ public interface UserDao {
     public void deleteUser(Long userId) throws Exception;
 
     public User selectUserById(Long userId) throws Exception;
+
+    User selectUserByName(String userName);
 }

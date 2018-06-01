@@ -24,6 +24,10 @@ public class UserDaoImpl implements UserDao{
     }
 
     public User selectUserById(Long userId) throws Exception {
-        return selectUserById(userId);
+        return userMapper.selectByPrimaryKey(userId);
+    }
+
+    public User selectUserByName(String userName) {
+        return userMapper.selectUserByName(userName);
     }
 }

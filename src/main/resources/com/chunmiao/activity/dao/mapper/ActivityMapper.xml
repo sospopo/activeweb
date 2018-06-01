@@ -114,4 +114,24 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where activity_id = #{activityId,jdbcType=BIGINT}
   </update>
+
+  <select id="queryActivityByMap" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_activity t1
+    where
+    t1.is_del = 1
+    <if test="params.userId != 0">
+      and t1.user_id = #{params.userId,jdbcType=BIGINT}
+    </if>
+    order by create_time
+    <choose>
+        <when test="params.orderBy == 1">
+            desc
+        </when>
+        <otherwise>
+            asc
+        </otherwise>
+    </choose>
+  </select>
 </mapper>

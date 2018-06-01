@@ -1,10 +1,12 @@
 package com.chunmiao.user.dao.mapper;
 
+import com.chunmiao.common.BaseMapper;
 import com.chunmiao.user.bo.School;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
+@BaseMapper
 public interface SchoolMapper {
     int deleteByPrimaryKey(Long schoolId);
 

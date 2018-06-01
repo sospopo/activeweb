@@ -2,6 +2,7 @@ package com.chunmiao.user.dao.mapper;
 
 import com.chunmiao.common.BaseMapper;
 import com.chunmiao.user.bo.User;
+import org.apache.ibatis.annotations.Param;
 
 @BaseMapper
 public interface UserMapper {
@@ -16,4 +17,6 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+    User selectUserByName(@Param("userName") String userName);
 }

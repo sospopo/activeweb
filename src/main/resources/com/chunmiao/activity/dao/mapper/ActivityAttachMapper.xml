@@ -154,4 +154,27 @@
       create_time = #{createTime,jdbcType=TIMESTAMP}
     where attach_id = #{attachId,jdbcType=BIGINT}
   </update>
+
+  <insert id="batchInserts" parameterType="java.util.List">
+    insert into t_activity_attach (user_id, activity_id, attach_type,
+      material_id, update_time, is_del,
+      create_time, content)
+      values 
+      <foreach collection="activityAttaches" item="item" index="index" separator=",">
+        (#{item.userId,jdbcType=BIGINT}, #{item.activityId,jdbcType=BIGINT}, #{item.attachType,jdbcType=TINYINT},
+        #{item.materialId,jdbcType=VARCHAR}, #{item.updateTime,jdbcType=TIMESTAMP}, #{item.isDel,jdbcType=TINYINT},
+        #{item.createTime,jdbcType=TIMESTAMP}, #{item.content,jdbcType=LONGVARCHAR})
+      </foreach>
+  </insert>
+
+  <select id="queryByActivityId" resultMap="ResultMapWithBLOBs">
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_activity_attach t1
+    where t1.activity_id = #{activityId,jdbcType=BIGINT}
+    and t1.is_del = 1
+    order by t1.create_time asc
+  </select>
 </mapper>
